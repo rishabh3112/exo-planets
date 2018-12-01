@@ -1,11 +1,11 @@
 # Flask Imports
 from flask import Flask
 from flask import Response
-
+from flask import render_template
 # Pandas Imports
 import pandas as pd
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="front/dist/", static_url_path="")
 
 # Load dataframe from the dataset
 data = pd.read_csv('data.csv')
@@ -27,6 +27,12 @@ def exoplanet(id):
     status=200,
     mimetype="application/json")
 
+# Serve Vue front-end
+@app.route('/')
+def frontEnd():
+    return app.send_static_file('index.html');
+
+# Error handler
 @app.errorhandler(404)
 def _404(e):
-    return Response(response='{"error": 404}', status=200, mimetype="application/json")
+    return Response(response='{"error": 404}', status=404, mimetype="application/json")
