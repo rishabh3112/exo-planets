@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ul>
+      <li v-for="(planet,id) in data" :key="id">
+        <router-link :to="`/${id}`"> <b @click="getPlanet(id)">{{ planet.PlanetIdentifier }}</b> </router-link> at {{ planet.DistFromEarthParsec }} parsec from earth
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import {mapState} from 'vuex'
+import {mapActions} from 'vuex'
 export default {
   name: 'home',
-  components: {
-    HelloWorld
-  }
+  computed: mapState({
+    data: 'homeData',
+  }),
+  methods: mapActions([
+    'getPlanet'
+  ])
 }
 </script>

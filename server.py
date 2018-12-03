@@ -11,7 +11,7 @@ app = Flask(__name__, static_folder="front/dist/", static_url_path="")
 data = pd.read_csv('data.csv')
 
 # api for GET on /
-@app.route('/api', methods=["GET"])
+@app.route('/api/', methods=["GET"])
 def index():
     return Response(response=data[["PlanetIdentifier","DistFromEarthParsec"]].to_json(orient="index"),
     status=200,

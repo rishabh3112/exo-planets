@@ -6,6 +6,10 @@ import './registerServiceWorker'
 
 Vue.config.productionTip = false
 
+store.commit('homeData');
+// eslint-disable-next-line no-console
+console.log(store.state.homeData);
+
 new Vue({
   router,
   store,
