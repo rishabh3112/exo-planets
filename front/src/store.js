@@ -4,7 +4,7 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-axios.defaults.baseURL = 'http://localhost:5000/api/';
+axios.defaults.baseURL = 'https://exo-planets.herokuapp.com/api/';
 
 const WIKIPEDIA_IMAGE_URL = (planet) => {
   return `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&origin=*&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=${planet}&gpslimit=1`
